@@ -53,6 +53,7 @@ function getTasks() {
 function addTask(e) {
   if (taskInput.value === '') {
     alert('Add a task')
+    return
   }
   // Create li element 
   const li = document.createElement('li')
@@ -125,10 +126,13 @@ function removeTaskFromLocalStorage(taskItem) {
 function clearTasks() {
   // Slower
   // taskList.innerHTML = ''
-
   // Faster 
   while (taskList.firstChild) {
     taskList.removeChild(taskList.firstChild)
+  }
+  // Clear from LocalStorage
+  function clearTasksFromLocalStorage() {
+    localStorage.clear()
   }
 }
 // Filter tasks
